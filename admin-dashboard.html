@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | AK Bridal Works</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="background-color: #0f0b15; font-family: 'Poppins', sans-serif">
+    <header
+      style="
+        display: flex;
+        align-items: center;
+        background-color: #1c1425;
+        padding: 5px 20px;
+        height: 100px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);
+      "
+    >
+      <img
+        src="images/logo.png"
+        alt="AK Bridal Works Logo"
+        style="
+          width: 200px;
+          height: auto;
+          max-height: 180px;
+          margin-left: 200px;
+        "
+      />
+      <nav
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+          margin-left: 50px;
+        "
+      >
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+        <a href="/admin-login" class="active">Admin</a>
+        <a href="/">Logout</a>
+      </nav>
+      <img
+        src="images/DSC00055.JPG"
+        alt="Admin Panel"
+        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover"
+      />
+    </header>
+
+    <main
+      style="
+        max-width: 1200px;
+        margin: 40px auto;
+        background: #1c1425;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(255, 73, 160, 0.4);
+        color: #f0dce5;
+      "
+    >
+      <h1
+        style="
+          font-family: 'Playfair Display', serif;
+          color: #ff49a0;
+          margin-bottom: 20px;
+          text-align: center;
+        "
+      >
+        Admin Dashboard
+      </h1>
+
+      <div style="display: flex; gap: 30px; margin-top: 30px">
+        <!-- Messages Section -->
+        <section
+          style="
+            flex: 1;
+            background: #2b1d33;
+            padding: 20px;
+            border-radius: 12px;
+          "
+        >
+          <h2
+            style="
+              font-family: 'Playfair Display', serif;
+              color: #ff7ebe;
+              margin-bottom: 15px;
+            "
+          >
+            Contact Messages
+          </h2>
+          <div
+            id="messagesContainer"
+            style="max-height: 400px; overflow-y: auto"
+          >
+            <!-- Messages will be loaded here by JavaScript -->
+          </div>
+        </section>
+
+        <!-- Gallery Management Section -->
+        <section
+          style="
+            flex: 1;
+            background: #2b1d33;
+            padding: 20px;
+            border-radius: 12px;
+          "
+        >
+          <h2
+            style="
+              font-family: 'Playfair Display', serif;
+              color: #ff7ebe;
+              margin-bottom: 15px;
+            "
+          >
+            Manage Gallery
+          </h2>
+
+          <!-- Add Video Form -->
+          <h3 style="color: #ffaad4; margin-bottom: 10px">Add New Video</h3>
+          <form id="addVideoForm">
+            <div style="margin-bottom: 15px">
+              <label for="videoName">Video Name:</label>
+              <input
+                type="text"
+                id="videoName"
+                name="videoName"
+                required
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 5px;
+                  border: none;
+                  background: #1c1425;
+                  color: #fff;
+                  font-size: 16px;
+                "
+              />
+            </div>
+
+            <div style="margin-bottom: 15px">
+              <label for="videoFile">Video File:</label>
+              <input
+                type="file"
+                id="videoFile"
+                name="file"
+                accept="video/*"
+                required
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border-radius: 5px;
+                  border: none;
+                  background: #1c1425;
+                  color: #fff;
+                  font-size: 16px;
+                "
+              />
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%">
+              Add Video
+            </button>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 20px;
+        background: #1c1425;
+        color: #f0dce5;
+        margin-top: 40px;
+      "
+    >
+      &copy; 2025 <strong>AK Bridal Works</strong>. All rights reserved.
+    </footer>
+
+    <script>
+      // Load messages when the page loads
+      window.addEventListener("DOMContentLoaded", function () {
+        loadMessages();
+      });
+
+      // Function to load messages from backend
+      function loadMessages() {
+        const messagesContainer = document.getElementById("messagesContainer");
+
+        
+
+        // Fetch messages from backend
+        fetch(`/api/consultation`)
+          .then((response) => response.json())
+          .then((messages) => {
+            if (messages.length === 0) {
+              messagesContainer.innerHTML = "<p>No messages found.</p>";
+              return;
+            }
+
+            // Clear the container
+            messagesContainer.innerHTML = "";
+
+            // Add each message to the container
+            messages.forEach(function (message) {
+              const messageElement = document.createElement("div");
+              messageElement.style.background = "#1c1425";
+              messageElement.style.padding = "15px";
+              messageElement.style.borderRadius = "8px";
+              messageElement.style.marginBottom = "10px";
+
+              messageElement.innerHTML = `
+              <p><strong>Name:</strong> ${message.name}</p>
+              <p><strong>Email:</strong> ${message.email}</p>
+              <p><strong>Phone:</strong> ${message.phone || "Not provided"}</p>
+              <p><strong>Message:</strong> ${message.message}</p>
+              <p><strong>Date:</strong> ${new Date(
+                message.date
+              ).toLocaleString()}</p>
+            `;
+
+              messagesContainer.appendChild(messageElement);
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            messagesContainer.innerHTML = "<p>Error loading messages.</p>";
+          });
+      }
+
+      // Handle Add Video Form
+      document
+        .getElementById("addVideoForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const videoName = document.getElementById("videoName").value;
+          const videoFile = document.getElementById("videoFile").files[0];
+          const formData = new FormData();
+
+          if (videoFile) {
+            formData.append("name", videoName);
+            formData.append("file", videoFile);
+
+            fetch("/api/upload", {
+              method: "POST",
+              body: formData,
+            })
+              .then((response) => response.json())
+              .then((data) => {
+                alert(data.message);
+                document.getElementById("addVideoForm").reset();
+              })
+              .catch((error) => {
+                console.error("Error:", error);
+                alert("Failed to upload video.");
+              });
+          } else {
+            alert("Please select a video file.");
+          }
+        });
+    </script>
+  </body>
+</html>

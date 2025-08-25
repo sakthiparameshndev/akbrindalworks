@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Us | AK Bridal Works</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header style="display: flex; align-items: center; background-color: #1c1425; padding: 5px 20px; height: 100px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);">
+    <img src="images/logo.png" alt="AK Bridal Works Logo" style="width: 200px; height: auto; max-height: 180px; margin-left: 200px;" />
+    <nav style="flex: 1; display: flex; justify-content: center; gap: 100px; margin-left: 50px;">
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/reviews">Reviews</a>
+      <a href="/contact" class="active">Contact</a>
+      <a href="/admin-login">Admin</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 800px; margin: 40px auto; background: #1c1425; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(255, 73, 160, 0.4); color: #f0dce5;">
+    <h1 style="font-family: 'Playfair Display', serif; color: #ff49a0; margin-bottom: 20px; text-align: center;">Contact Us</h1>
+    
+    <section style="margin-bottom: 40px;">
+      <h2 style="font-family: 'Playfair Display', serif; color: #ff7ebe; margin-bottom: 15px;">Get in Touch</h2>
+      <p style="margin-bottom: 20px;">We'd love to hear from you! Whether you're looking to book your special day or simply want to know more about our services, feel free to get in touch.</p>
+      
+      <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-family: 'Playfair Display', serif; color: #ffaad4; margin-bottom: 10px;">Contact Information</h3>
+          <p><strong>Phone:</strong><br/>
+          <a href="tel:+919551018335" style="color: #ffaad4; text-decoration: none;">+91 95510 18335</a></p>
+          <p><strong>Instagram:</strong><br/>
+          <a href="https://www.instagram.com/chennaimakeupartist_ak?igsh=MWYwaDNubG54NGszOQ==" target="_blank" style="color: #ffaad4; text-decoration: none;">
+            @chennaimakeupartist_ak
+          </a></p>
+        </div>
+        
+        <div style="flex: 1; min-width: 250px;">
+          <h3 style="font-family: 'Playfair Display', serif; color: #ffaad4; margin-bottom: 10px;">Business Hours</h3>
+          <p>Monday - Friday: 10:00 AM - 8:00 PM</p>
+          <p>Saturday: 9:00 AM - 6:00 PM</p>
+          <p>Sunday: Closed</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family: 'Playfair Display', serif; color: #ff7ebe; margin-bottom: 15px;">Send us a Message</h2>
+      <form id="contactForm">
+        <div style="margin-bottom: 15px;">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b1d33; color: #fff; font-size: 16px;" />
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b1d33; color: #fff; font-size: 16px;" />
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+          <label for="phone">Phone:</label>
+          <input type="tel" id="phone" name="phone" style="width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b1d33; color: #fff; font-size: 16px;" />
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required style="width: 100%; padding: 10px; border-radius: 5px; border: none; background: #2b1d33; color: #fff; font-size: 16px;"></textarea>
+        </div>
+        
+        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <footer style="text-align: center; padding: 20px; background: #1c1425; color: #f0dce5; margin-top: 40px;">
+    &copy; 2025 <strong>AK Bridal Works</strong>. All rights reserved.
+  </footer>
+
+  <script>
+
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      
+      // Send message to backend
+      fetch(`/api/consultation`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, email, phone, message })
+      })
+      .then(response => response.json())
+      .then(data => {
+        alert(`Thank you for your message, ${name}! We'll get back to you soon.`);
+        document.getElementById('contactForm').reset();
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending your message. Please try again.');
+      });
+    });
+  </script>
+</body>
+</html>

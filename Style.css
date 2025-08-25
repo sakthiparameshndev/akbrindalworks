@@ -1,0 +1,690 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500;600&display=swap');
+
+/* Reset and Font */
+/* Reset and Font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #0f0b15;
+  color: #eee;
+}
+
+/* Header Section */
+header {
+  background-color: #0f0b15;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px; /* Reduced padding */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Logo */
+header img {
+  height: 60px; /* Adjust as needed */
+}
+
+/* Navigation */
+nav a {
+  position: relative;
+  color: #ff69b4;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 6px 10px;
+  transition: all 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+/* Underline effect */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ffffff;
+  transition: width 0.3s ease-in-out;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: #ffffff;
+}
+
+/* Active link style */
+nav a.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+nav a.active::after {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+/* ========== Hero Section ========== */
+#hero {
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+/* Carousel */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+  height: 90vh;
+}
+.carousel-track img {
+  flex-shrink: 0;
+  width: 25vw;
+  height: 90vh;
+  object-fit: contain;
+  background: #000;
+}
+
+/* Carousel Buttons */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 32px;
+  padding: 12px 18px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.carousel-btn.left {
+  left: 15px;
+}
+.carousel-btn.right {
+  right: 15px;
+}
+.carousel-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Hero Content */
+.hero-content {
+  margin-top: 30px;
+  text-align: center;
+  padding: 30px 20px;
+}
+.hero-content h2 {
+  font-size: 44px;
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #ff49a0;
+}
+.hero-content p {
+  font-size: 19px;
+  color: #f0dce5;
+  margin-bottom: 30px;
+}
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+}
+.btn {
+  padding: 14px 38px;
+  background-color: #ff49a0;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 6px 25px rgba(255, 73, 160, 0.5);
+  transition: all 0.3s ease;
+}
+.btn:hover {
+  background-color: #e00075;
+  transform: translateY(-3px);
+}
+
+/* ========== About Section ========== */
+.about-section {
+  background: #1c1425;
+  color: #eee;
+  padding: 60px 20px;
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(255, 73, 160, 0.4);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+.about-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.about-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  position: relative;
+  color: #ff49a0;
+}
+.about-title span {
+  border-bottom: 4px solid #ff7ebe;
+  padding-bottom: 4px;
+}
+.about-text {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #f0dce5;
+  text-shadow: 0 0 4px rgba(255, 73, 160, 0.3);
+}
+.highlight {
+  color: #ff7ebe;
+  font-weight: 600;
+}
+.btn-about {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff49a0 0%, #ff7ebe 100%);
+  color: white;
+  padding: 14px 48px;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(255, 73, 160, 0.6);
+  transition: all 0.4s ease;
+  margin-top: 10px;
+}
+.btn-about:hover {
+  background: linear-gradient(135deg, #e00075 0%, #ff49a0 100%);
+  box-shadow: 0 10px 30px rgba(224, 0, 117, 0.8);
+  transform: translateY(-4px);
+}
+
+/* ========== Contact Section ========== */
+.contact-section {
+  background-color: #1a121f;
+  padding: 60px 20px;
+  color: #f0dce5;
+  text-align: center;
+}
+.contact-section h2 {
+  font-size: 36px;
+  font-family: 'Playfair Display', serif;
+  color: #ff49a0;
+  margin-bottom: 15px;
+}
+.contact-section p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  font-size: 16px;
+}
+.contact-item a {
+  color: #ffaad4;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+.contact-item a:hover {
+  color: #ff49a0;
+}
+
+/* ========== Footer ========== */
+footer {
+  background-color: #1b131d;
+  color: #f0b3d9;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-top: 1px solid #333;
+}
+/* === Services Page Additions === */
+.services-hero {
+  background: linear-gradient(to right, #ff49a0, #ffaad4);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+.services-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+.services-hero p {
+  font-size: 1.2rem;
+  color: #fce6ef;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 60px 40px;
+  background-color: #1c1425;
+}
+
+.service-card {
+  background: #2b1d33;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(255, 73, 160, 0.3);
+  padding: 20px;
+  text-align: center;
+  color: #f0dce5;
+  transition: transform 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-6px);
+}
+.service-card img {
+  width: 100%;
+  border-radius: 12px;
+  height: 80%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.service-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #ff7ebe;
+}
+.service-card p {
+  font-size: 16px;
+  color: #d8cbd7;
+}
+.service-card .price {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #ffaad4;
+  font-size: 18px;
+}
+
+.cta-section {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #0f0b15;
+}
+.cta-section h2 {
+  font-size: 32px;
+  font-family: 'Playfair Display', serif;
+  color: #ff49a0;
+  margin-bottom: 20px;
+}
+.cta-section .btn {
+  padding: 14px 38px;
+  background-color: #ff49a0;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 6px 25px rgba(255, 73, 160, 0.5);
+  transition: all 0.3s ease;
+}
+.cta-section .btn:hover {
+  background-color: #e00075;
+  transform: translateY(-3px);
+}
+.extra-services {
+  padding: 60px 20px;
+  background: #1e1e2f;
+  color: #fff;
+  text-align: center;
+}
+
+.extra-services {
+  padding: 60px 20px;
+  background: #1c1425; /* consistent with about-section bg */
+  color: #f0dce5;       /* soft pink-white text */
+  text-align: center;
+}
+
+.extra-services h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-family: 'Playfair Display', serif;
+  color: #ff49a0; /* matches main pink highlight */
+}
+
+.extra-service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  justify-content: center; /* 👈 This line centers the last row */
+}
+
+
+.extra-card {
+  background: #2b1d33; /* consistent with service cards */
+  padding: 30px 20px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 73, 160, 0.2);
+}
+
+.extra-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 73, 160, 0.35);
+}
+
+.extra-card i {
+  font-size: 50px;
+  color: #ff7ebe; /* same as other icon/heading colors */
+  margin-bottom: 15px;
+  animation: float 2.5s ease-in-out infinite;
+  display: inline-block;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.extra-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #ffaad4;
+}
+
+.extra-card p {
+  font-size: 14px;
+  color: #f0dce5; /* same as main body text */
+  margin-bottom: 10px;
+}
+
+.extra-card .price {
+  font-weight: bold;
+  color: #ffaad4;
+  font-size: 18px;
+}
+/* ======= Gallery Page Styling ======= */
+
+/* Gallery Hero Section */
+.gallery-hero {
+  background: linear-gradient(to right, #1c1425, #2b1d33);
+  text-align: center;
+  padding: 60px 20px 30px;
+  color: #ffaad4;
+}
+
+.gallery-hero h1 {
+  font-size: 3rem;
+  font-family: 'Playfair Display', serif;
+  color: #ff49a0;
+  margin-bottom: 10px;
+}
+
+.gallery-hero p {
+  font-size: 1.2rem;
+  color: #f0dce5;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 500;
+}
+
+/* Video Grid reused (already in your CSS) */
+.video-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.video-item video {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 73, 160, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-item video:hover {
+  transform: scale(1.02);
+  box-shadow: 0 12px 40px rgba(255, 73, 160, 0.3);
+}
+
+/* Call-to-Action (same style as your services CTA) */
+.cta-section {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: #1a121f;
+}
+
+.cta-section h2 {
+  font-size: 2.5rem;
+  font-family: 'Playfair Display', serif;
+  color: #ff49a0;
+  margin-bottom: 20px;
+}
+
+.cta-section .btn {
+  padding: 14px 38px;
+  background-color: #ff49a0;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 6px 25px rgba(255, 73, 160, 0.5);
+  transition: all 0.3s ease;
+}
+
+.cta-section .btn:hover {
+  background-color: #e00075;
+  transform: translateY(-3px);
+}
+/* ====== Review Section Styling ====== */
+
+/* Review Page Wrapper */
+.review-page {
+  background-color: #0f0b15; /* same dark bg as body */
+  color: #eee;               /* same text color */
+  min-height: 100vh;
+  padding: 60px 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Review Section Container */
+.review-section {
+  max-width: 900px;
+  margin: 0 auto 60px auto;
+  background: #1c1425; /* consistent with about-section bg */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(255, 73, 160, 0.4);
+  padding: 30px;
+  color: #f0dce5;
+}
+
+/* Review Title */
+.review-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #ff49a0;
+  border-bottom: 4px solid #ff7ebe;
+  padding-bottom: 6px;
+}
+
+/* Individual Review Card */
+.review-card {
+  background: #2b1d33;
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(255, 73, 160, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 73, 160, 0.35);
+}
+
+.review-card .reviewer-name {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #ffaad4;
+  margin-bottom: 8px;
+}
+
+.review-card .review-text {
+  font-size: 1.1rem;
+  color: #f0dce5;
+  line-height: 1.5;
+}
+
+/* Optional: Star rating style */
+.review-rating {
+  color: #ff7ebe;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+/* Button consistent with other pages */
+.btn-review {
+  padding: 14px 38px;
+  background-color: #ff49a0;
+  color: white;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  box-shadow: 0 6px 25px rgba(255, 73, 160, 0.5);
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.btn-review:hover {
+  background-color: #e00075;
+  transform: translateY(-3px);
+}
+/* === Review Page Styling === */
+
+.review-header {
+  background: #1c1425;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.review-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #ff49a0;
+}
+
+.review-header p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #d8cbd7;
+}
+
+.review-form-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #1c1425;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(255, 73, 160, 0.3);
+}
+
+.review-form-container h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ffaad4;
+  text-align: center;
+}
+
+.review-form-container form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.review-form-container form input,
+.review-form-container form textarea,
+.review-form-container form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: none;
+  background: #2b1d33;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.review-form-container form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.review-form-container form button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  background: #ff49a0;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 25px rgba(255, 73, 160, 0.4);
+  transition: background 0.3s ease;
+}
+
+.review-form-container form button:hover {
+  background: #e00075;
+}
+
+/* Footer (can be added if not already in style.css) */
+footer {
+  background: #1c1425;
+  text-align: center;
+  padding: 20px 10px;
+  font-size: 14px;
+  color: #f0dce5;
+  border-top: 1px solid #2b1d33;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Signup | AK Bridal Works</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header style="display: flex; align-items: center; background-color: #1c1425; padding: 5px 20px; height: 100px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);">
+    <img src="images/logo.png" alt="AK Bridal Works Logo" style="width: 200px; height: auto; max-height: 180px; margin-left: 200px;" />
+    <nav style="flex: 1; display: flex; justify-content: center; gap: 100px; margin-left: 50px;">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main style="max-width: 400px; margin: 40px auto; background: #1c1425; padding: 30px; border-radius: 12px; box-shadow: 0 10px 30px rgba(255, 73, 160, 0.4); color: #f0dce5;">
+    <h2 style="font-family: 'Playfair Display', serif; color: #ff49a0; margin-bottom: 20px; text-align: center;">User Login</h2>
+    <form id="userLoginForm">
+      <label for="userId">User ID:</label>
+      <input type="text" id="userId" name="userId" required />
+      <label for="userPassword">Password:</label>
+      <input type="password" id="userPassword" name="userPassword" required />
+      <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Login</button>
+    </form>
+
+    <hr style="margin: 30px 0; border-color: #ff49a0;" />
+
+    <h2 style="font-family: 'Playfair Display', serif; color: #ff49a0; margin-bottom: 20px; text-align: center;">Admin Login</h2>
+    <form id="adminLoginForm">
+      <label for="adminId">Admin ID:</label>
+      <input type="text" id="adminId" name="adminId" required />
+      <label for="adminPassword">Password:</label>
+      <input type="password" id="adminPassword" name="adminPassword" required />
+      <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Login</button>
+    </form>
+
+    <hr style="margin: 30px 0; border-color: #ff49a0;" />
+
+    <h2 style="font-family: 'Playfair Display', serif; color: #ff49a0; margin-bottom: 20px; text-align: center;">Sign Up</h2>
+    <form id="signupForm">
+      <label for="signupUserId">User ID:</label>
+      <input type="text" id="signupUserId" name="signupUserId" required />
+      <label for="signupPassword">Password:</label>
+      <input type="password" id="signupPassword" name="signupPassword" required />
+      <button type="submit" class="btn" style="width: 100%; margin-top: 15px;">Sign Up</button>
+    </form>
+  </main>
+
+  <script>
+    const backendBaseUrl = 'http://localhost:5500';
+
+    // Add your login/signup JavaScript here, using backendBaseUrl for API calls
+  </script>
+</body>
+</html>

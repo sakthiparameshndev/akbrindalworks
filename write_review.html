@@ -1,0 +1,225 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Write a Review | AK Bridal Works</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #0f0b15;
+      color: #f0dce5;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #1c1425;
+      padding: 5px 20px;
+      height: 100px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);
+    }
+
+    header img {
+      width: 200px;
+      height: auto;
+      max-height: 180px;
+      margin-left: 200px;
+    }
+
+    header nav {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      gap: 100px;
+      margin-left: 50px;
+    }
+
+    header nav a {
+      color: #f0dce5;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #ff49a0;
+    }
+
+    .review-header {
+      background: #1c1425;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .review-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      color: #ff49a0;
+    }
+
+    .review-header p {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: #d8cbd7;
+    }
+
+    .review-form-container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #1c1425;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(255, 73, 160, 0.3);
+    }
+
+    .review-form-container h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ffaad4;
+      text-align: center;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: none;
+      background: #2b1d33;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    form button {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      background: #ff49a0;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 6px 25px rgba(255, 73, 160, 0.4);
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background: #e00075;
+    }
+
+    footer {
+      background: #1c1425;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 14px;
+      color: #f0dce5;
+      border-top: 1px solid #2b1d33;
+    }
+
+    footer strong {
+      color: #ff49a0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="images/logo.png" alt="AK Bridal Works Logo" />
+    <nav>
+      <a href="/">Home</a>
+      <a href="/services">Services</a>
+      <a href="/gallery">Gallery</a>
+      <a href="/reviews">Reviews</a>
+      <a href="/contact">Contact</a>
+      <a href="/admin-login">Admin</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="review-header">
+    <h1>Share Your Experience</h1>
+    <p>We'd love to hear how your makeover went with AK Bridal Works.</p>
+  </section>
+
+  <!-- Review Form Section -->
+    <section class="review-form-container">
+      <h2>Write a Review</h2>
+      <form id="reviewForm">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="rating">Rating</label>
+        <select id="rating" name="rating" required>
+          <option value="">Choose a rating</option>
+          <option value="5">★★★★★ - Excellent</option>
+          <option value="4">★★★★☆ - Good</option>
+          <option value="3">★★★☆☆ - Average</option>
+          <option value="2">★★☆☆☆ - Poor</option>
+          <option value="1">★☆☆☆☆ - Bad</option>
+        </select>
+
+        <label for="review">Your Review</label>
+        <textarea id="review" name="review" placeholder="Share your experience..." required></textarea>
+
+        <button type="submit">Submit Review</button>
+      </form>
+    </section>
+    
+    <script>
+
+
+      document.getElementById('reviewForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const rating = document.getElementById('rating').value;
+        const review = document.getElementById('review').value;
+        
+        // Send review to backend
+        fetch(`/api/reviews`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name, rating, review })
+        })
+        .then(response => response.json())
+        .then(data => {
+          alert('Thank you for your review!');
+          document.getElementById('reviewForm').reset();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('There was an error submitting your review. Please try again.');
+        });
+      });
+    </script>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 <strong>AK Bridal Works</strong>. All rights reserved.
+  </footer>
+
+</body>
+</html>

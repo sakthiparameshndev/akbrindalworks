@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AK Bridal Works</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header
+      style="
+        display: flex;
+        align-items: center;
+        background-color: #1c1425;
+        padding: 5px 20px;
+        height: 100px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);
+      "
+    >
+      <!-- Logo -->
+      <img
+        src="./images/logo.png"
+        alt="AK Bridal Works Logo"
+        style="
+          width: 200px;
+          height: auto;
+          max-height: 180px;
+          margin-left: 200px;
+        "
+      />
+
+      <!-- Nav section full width with left margin -->
+      <nav
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+          margin-left: 50px;
+        "
+      >
+        <a href="/">Home</a>
+        <a
+          href="/services"
+          style="font-family: 'Playfair Display', serif; font-size: 18px"
+          >Services</a
+        >
+        <a href="/gallery">Gallery</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+        <a href="/admin-login">Admin</a>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="carousel-container">
+        <div class="carousel-track" id="carouselTrack">
+          <img src="images/DSC00014.JPG" alt="Bride 1" />
+          <img src="images/DSC00084.JPG" alt="Bride 2" />
+          <img src="images/DSC00055.JPG" alt="Bride 3" />
+          <img src="images/bridalbg.jpg" alt="Bride 4" />
+        </div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="hero-content">
+        <h2>Bridal Makeovers for Your Special Day</h2>
+        <p>Transforming dreams into reality with flawless bridal looks</p>
+        <div class="button-group">
+          <a href="/services" class="btn">Our Services</a>
+          <a href="/contact" class="btn">Book Your Consultation</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2 class="about-title">About <span>AK Bridal Works</span></h2>
+        <p class="about-text">
+          At <strong>AK Bridal Works</strong>, we believe every bride deserves
+          to look and feel her <span class="highlight">absolute best</span> on
+          her special day. With a small, dedicated duo behind the scenes, we
+          create <span class="highlight">personalized bridal looks</span> that
+          enhance your natural beauty and reflect your unique style.
+        </p>
+        <p class="about-text">
+          We provide <em>attentive, one-on-one service</em> to make sure you
+          feel comfortable and confident throughout your bridal journey. Using
+          <strong>high-quality, skin-friendly products</strong>, we tailor each
+          look to suit your individual preferences.
+        </p>
+        <p class="about-text">
+          Whether you want a <span class="highlight">timeless classic</span> or
+          a <span class="highlight">contemporary glam</span> look, AK Bridal
+          Works is committed to making your special day truly unforgettable with
+          a warm and caring touch.
+        </p>
+        <a href="/contact" class="btn btn-about">Book Your Consultation</a>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+      <h2>Contact Us</h2>
+      <p>
+        We’d love to hear from you! Whether you're looking to book your special
+        day or simply want to know more about our services, feel free to get in
+        touch.
+      </p>
+
+      <div class="contact-details">
+        <div class="contact-item">
+          <strong>Phone:</strong><br />
+          <a href="tel:+919551018335">+91 95510 18335</a>
+        </div>
+        <div class="contact-item">
+          <strong>Instagram:</strong><br />
+          <a
+            href="https://www.instagram.com/chennaimakeupartist_ak?igsh=MWYwaDNubG54NGszOQ=="
+            target="_blank"
+          >
+            @chennaimakeupartist_ak
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 AK Bridal Works. All rights reserved.</footer>
+
+    <!-- Carousel Script -->
+    <script>
+      let scrollIndex = 0;
+
+      function scrollCarousel(direction) {
+        const track = document.getElementById("carouselTrack");
+        const image = track.querySelector("img");
+        const imageWidth = image.clientWidth;
+        const visibleImages = Math.floor(track.clientWidth / imageWidth);
+        const maxIndex = track.children.length - visibleImages;
+
+        scrollIndex += direction;
+        if (scrollIndex < 0) scrollIndex = 0;
+        if (scrollIndex > maxIndex) scrollIndex = maxIndex;
+
+        const scrollAmount = imageWidth * scrollIndex;
+        track.style.transform = `translateX(-${scrollAmount}px)`;
+      }
+      // Animate About Section on Scroll
+      const aboutSection = document.querySelector(".about-section");
+
+      function revealAboutOnScroll() {
+        const windowHeight = window.innerHeight;
+        const revealTop = aboutSection.getBoundingClientRect().top;
+        const revealPoint = 150; // pixels before the element comes into view
+
+        if (revealTop < windowHeight - revealPoint) {
+          aboutSection.classList.add("visible");
+        }
+      }
+
+      window.addEventListener("scroll", revealAboutOnScroll);
+      window.addEventListener("load", revealAboutOnScroll);
+    </script>
+  </body>
+</html>

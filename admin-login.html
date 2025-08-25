@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Login | AK Bridal Works</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    style="
+      background-color: #0f0b15;
+      font-family: 'Poppins', sans-serif;
+      background-image: url('images/DSC00055.JPG');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.8;
+      animation: fadeIn 2s ease-in, float 6s ease-in-out infinite;
+    "
+  >
+    <header
+      style="
+        display: flex;
+        align-items: center;
+        background-color: #1c1425;
+        padding: 5px 20px;
+        height: 100px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);
+      "
+    >
+      <img
+        src="images/logo.png"
+        alt="AK Bridal Works Logo"
+        style="
+          width: 200px;
+          height: auto;
+          max-height: 180px;
+          margin-left: 200px;
+        "
+      />
+      <nav
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+          margin-left: 50px;
+        "
+      >
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/gallery">Gallery</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+        <a href="/admin-login" class="active">Admin</a>
+      </nav>
+      <img
+        src="images/DSC00055.JPG"
+        alt="Admin Panel"
+        style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover"
+      />
+    </header>
+
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      main {
+        background: rgba(28, 20, 37, 0.85) !important;
+      }
+    </style>
+
+    <main
+      style="
+        max-width: 400px;
+        margin: 40px auto;
+        background: #1c1425;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(255, 73, 160, 0.4);
+        color: #f0dce5;
+      "
+    >
+      <h1
+        style="
+          font-family: 'Playfair Display', serif;
+          color: #ff49a0;
+          margin-bottom: 20px;
+          text-align: center;
+        "
+      >
+        Admin Login
+      </h1>
+
+      <form id="adminLoginForm" action="/admin-login" method="POST">
+        <div style="margin-bottom: 15px">
+          <label for="adminId">Admin ID:</label>
+          <input
+            type="text"
+            id="adminId"
+            name="adminId"
+            required
+            style="
+              width: 100%;
+              padding: 10px;
+              border-radius: 5px;
+              border: none;
+              background: #2b1d33;
+              color: #fff;
+              font-size: 16px;
+            "
+          />
+        </div>
+
+        <div style="margin-bottom: 15px">
+          <label for="adminPassword">Password:</label>
+          <input
+            type="password"
+            id="adminPassword"
+            name="adminPassword"
+            required
+            style="
+              width: 100%;
+              padding: 10px;
+              border-radius: 5px;
+              border: none;
+              background: #2b1d33;
+              color: #fff;
+              font-size: 16px;
+            "
+          />
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%">Login</button>
+      </form>
+    </main>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 20px;
+        background: #1c1425;
+        color: #f0dce5;
+        margin-top: 40px;
+      "
+    >
+      &copy; 2025 <strong>AK Bridal Works</strong>. All rights reserved.
+    </footer>
+
+    
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services | AK Bridal Works</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/phosphor-icons@1.4.2/src/css/ph.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      style="
+        display: flex;
+        align-items: center;
+        background-color: #1c1425;
+        padding: 5px 20px;
+        height: 100px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);
+      "
+    >
+      <!-- Logo -->
+      <img
+        src="images/logo.png"
+        alt="AK Bridal Works Logo"
+        style="
+          width: 200px;
+          height: auto;
+          max-height: 180px;
+          margin-left: 200px;
+        "
+      />
+      <!-- Nav -->
+      <nav
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+          margin-left: 50px;
+        "
+      >
+        <a href="/">Home</a>
+        <a
+          href="/services"
+          class="active"
+          style="font-family: 'Playfair Display', serif; font-size: 18px"
+          >Services</a
+        >
+        <a href="/gallery">Gallery</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+        <a href="/admin-login">Admin</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+      <h1>Our Bridal Services</h1>
+      <p>
+        Explore our wide range of premium bridal packages designed to make your
+        special day flawless.
+      </p>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="service-grid">
+      <div class="service-card">
+        <img src="images/bridalwork.jpg" alt="Bridal Makeup" />
+        <h3>Classic Bridal Makeup</h3>
+        <p>
+          Timeless looks with elegant detailing to enhance your natural beauty.
+        </p>
+        <div class="price">₹15,000</div>
+      </div>
+      <div class="service-card">
+        <img src="images/hd bride.png" alt="HD Makeup" />
+        <h3>HD Makeup</h3>
+        <p>High-definition flawless finish for photography-perfect moments.</p>
+        <div class="price">₹20,000</div>
+      </div>
+      <div class="service-card">
+        <img src="images/airbrush.png" alt="Airbrush Makeup" />
+        <h3>Airbrush Bridal</h3>
+        <p>Lightweight, long-lasting airbrush makeup with natural radiance.</p>
+        <div class="price">₹25,000</div>
+      </div>
+      <div class="service-card">
+        <img src="images/reception bride.png" alt="Reception Look" />
+        <h3>Reception Glam</h3>
+        <p>Glamorous evening makeover with bold, statement-ready style.</p>
+        <div class="price">₹12,000</div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Book Your Bridal Look Today</h2>
+      <a href="/#contact" class="btn">Get in Touch</a>
+    </section>
+
+    <!-- Additional Services Section -->
+    <section class="extra-services">
+      <h2>Other Services</h2>
+      <div
+        class="extra-service-grid"
+        style="
+          display: grid;
+          grid-template-columns: repeat(3, 220px);
+          gap: 30px;
+          justify-content: center;
+          max-width: 720px;
+          margin: 0 auto;
+        "
+      >
+        <div class="extra-card">
+          <i class="fa-solid fa-baby"></i>
+          <h4>Baby Shower Makeover</h4>
+          <p>Celebrate your motherhood journey with a radiant look.</p>
+          <div class="price">₹1,999</div>
+        </div>
+        <div class="extra-card">
+          <i class="fa-solid fa-user-tie"></i>
+          <h4>Groom Makeover</h4>
+          <p>Sharp, clean, and confident grooming for the big day.</p>
+          <div class="price">₹2,499</div>
+        </div>
+        <div class="extra-card">
+          <i class="fa-solid fa-swatchbook"></i>
+          <h4>Saree Pre-Pleating</h4>
+          <p>Neat and graceful pleating for all traditional sarees.</p>
+          <div class="price">₹799</div>
+        </div>
+        <div class="extra-card">
+          <i class="fa-solid fa-ring"></i>
+          <h4>Engagement/Reception Look</h4>
+          <p>Get the perfect glam look for your special events.</p>
+          <div class="price">₹3,499</div>
+        </div>
+        <div class="extra-card">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <h4>Party Makeup</h4>
+          <p>Subtle to bold looks tailored for your party vibe.</p>
+          <div class="price">₹1,499</div>
+        </div>
+        <div class="extra-card">
+          <i class="fa-solid fa-scissors"></i>
+          <h4>Hairstyling</h4>
+          <p>Elegant, trendy, or traditional styles to match your attire.</p>
+          <div class="price">₹999</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 AK Bridal Works. All rights reserved.</footer>
+  </body>
+</html>

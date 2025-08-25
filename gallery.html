@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | AK Bridal Works</title>
+    <link rel="stylesheet" href="Style.css">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Playfair+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <style>
+      /* ✅ 3 videos per row */
+      .video-gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 40px;
+        justify-items: center;
+      }
+
+      .video-item {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .video-item:hover {
+        transform: scale(1.05);
+      }
+
+      .video-item video {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 12px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      style="
+        display: flex;
+        align-items: center;
+        background-color: #1c1425;
+        padding: 5px 20px;
+        height: 100px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 6px 25px rgba(255, 73, 160, 0.3);
+      "
+    >
+      <img
+        src="images/logo.png"
+        alt="AK Bridal Works Logo"
+        style="
+          width: 200px;
+          height: auto;
+          max-height: 180px;
+          margin-left: 200px;
+        "
+      />
+      <nav
+        style="
+          flex: 1;
+          display: flex;
+          justify-content: center;
+          gap: 100px;
+          margin-left: 50px;
+        "
+      >
+        <a href="/">Home</a>
+        <a href="/services">Services</a>
+        <a href="/gallery" class="active">Gallery</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/contact">Contact</a>
+        <a href="/admin-login">Admin</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="gallery-hero">
+      <h1>Bridal Reels Gallery</h1>
+      <p>Watch some of our best bridal transformations in action!</p>
+    </section>
+
+    <!-- Video Gallery Grid -->
+    <div id="videoGallery" class="video-gallery-grid"></div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function () {
+        loadGallery();
+      });
+
+      function loadGallery() {
+        const galleryContainer = document.getElementById("videoGallery");
+
+        fetch("/api/videos")
+          .then((response) => response.json())
+          .then((videoFiles) => {
+            if (videoFiles.length === 0) {
+              galleryContainer.innerHTML = "<p>No videos found.</p>";
+              return;
+            }
+
+            galleryContainer.innerHTML = "";
+
+            videoFiles.forEach(function (videoFile) {
+              const galleryElement = document.createElement("div");
+              galleryElement.className = "video-item";
+              galleryElement.innerHTML = `<video src="videos/${videoFile}" autoplay muted loop playsinline></video>`;
+              galleryContainer.appendChild(galleryElement);
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            galleryContainer.innerHTML = "<p>Error loading gallery.</p>";
+          });
+      }
+    </script>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Loved Our Reels?</h2>
+      <a href="/#contact" class="btn">Book Your Glam Session</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>&copy; 2025 AK Bridal Works. All rights reserved.</footer>
+  </body>
+</html>
